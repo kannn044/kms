@@ -2,6 +2,7 @@ import streamlit as st
 from modules.auth import login_user, register_user
 from modules.database import get_db_connection
 import time
+from config import PASSWORD_MIN_LENGTH
 
 def show_login_page():
     """Display enhanced login page with properly positioned register button"""
@@ -464,3 +465,24 @@ def back_to_login():
     """Helper function to go back to login page"""
     st.session_state['show_register'] = False
     st.session_state['registration_success'] = False
+    
+def validate_email(email):
+    """Validate email format using regex"""
+    pattern = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
+    return re.match(pattern, email) is not None
+
+def validate_password(password):
+    """Validate password strength"""
+    if len(password) < PASSWORD_MIN_LENGTH:
+        return False, f"Password must be at least {PASSWORD_MIN_LENGTH} characters"
+    
+    if not re.search(r"[A-Z]", password):
+        return False, "Password must contain at least one uppercase letter"
+    
+    if not re.search(r"[a-z]", password):
+        return False, "Password must contain at least one lowercase letter"
+    
+    if not re.search(r"\d", password):
+        return False, "Password must contain at least one number"
+    
+    return True, ""
