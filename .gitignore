@@ -2,5 +2,4 @@ venv
 knowledge_db.sqlite
 __pycache__
 faiss_index
-modules
 uploaded_files
