@@ -1,3 +1,4 @@
+import re
 import streamlit as st
 from modules.auth import login_user, register_user
 from modules.database import get_db_connection
