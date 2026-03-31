@@ -27,7 +27,7 @@ def get_vectorstore():
         # ตรวจสอบว่าไฟล์ index.faiss และ index.pkl มีอยู่จริงหรือไม่
         if os.path.exists(index_path) and os.path.exists(docstore_path):
             try:
-                return FAISS.load_local(vectorstore_path, embeddings)
+                return FAISS.load_local(vectorstore_path, embeddings, allow_dangerous_deserialization=True)
             except Exception as e:
                 st.warning(f"Failed to load existing vector store: {e}")
                 # สร้างใหม่และบันทึกทันที
@@ -146,7 +146,8 @@ def rebuild_vectorstore(knowledge_items):
         vectorstore.save_local(VECTORSTORE_PATH)
         return True
     else:
-        # Create empty vectorstore
-        vectorstore = FAISS.from_documents([], embeddings)
+        # Create vectorstore with a placeholder doc (empty list crashes FAISS)
+        empty_doc = Document(page_content="Initial document", metadata={"id": 0})
+        vectorstore = FAISS.from_documents([empty_doc], embeddings)
         vectorstore.save_local(VECTORSTORE_PATH)
         return True

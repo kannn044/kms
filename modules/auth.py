@@ -96,7 +96,7 @@ def require_auth(page_function):
             return page_function(*args, **kwargs)
         else:
             st.error("You need to log in to access this page")
-            st.rerun()()
+            st.rerun()
     return wrapper
 
 def require_admin(page_function):
@@ -107,5 +107,5 @@ def require_admin(page_function):
             return page_function(*args, **kwargs)
         else:
             st.error("You need admin privileges to access this page")
-            st.rerun()()
+            st.rerun()
     return wrapper

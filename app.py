@@ -17,6 +17,7 @@ from modules.ui.search import show_search_page
 from modules.ui.knowledge_form import show_add_knowledge_page, show_manage_knowledge_page
 from modules.ui.profile import show_profile_page
 from modules.ui.admin import show_user_management_page
+from modules.ui.styles import inject_global_css
 
 # Configure page settings
 st.set_page_config(
@@ -29,6 +30,9 @@ def main():
     """Main application entry point"""
     # Initialize database
     init_database()
+    
+    # Inject global CSS theme
+    inject_global_css()
     
     # Initialize session state
     if 'logged_in' not in st.session_state:
