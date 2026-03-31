@@ -27,25 +27,25 @@ def show_home_page():
 
     st.markdown("<br>", unsafe_allow_html=True)
 
-    # Quick actions
-    st.markdown("""
-    <div style="margin-bottom: 1.5rem;">
-        <h3 style="color: #E8ECF1; font-weight: 600; margin-bottom: 1rem;">⚡ Quick Actions</h3>
-    </div>
-    """, unsafe_allow_html=True)
+    # # Quick actions
+    # st.markdown("""
+    # <div style="margin-bottom: 1.5rem;">
+    #     <h3 style="color: #E8ECF1; font-weight: 600; margin-bottom: 1rem;">⚡ Quick Actions</h3>
+    # </div>
+    # """, unsafe_allow_html=True)
 
-    qa_col1, qa_col2, qa_col3 = st.columns(3)
-    with qa_col1:
-        if st.button("➕  Add Knowledge", use_container_width=True):
-            st.session_state["sidebar_selection"] = "Add Knowledge"
-    with qa_col2:
-        if st.button("🔍  Search", use_container_width=True):
-            st.session_state["sidebar_selection"] = "Search"
-    with qa_col3:
-        if st.button("👤  My Profile", use_container_width=True):
-            st.session_state["sidebar_selection"] = "Profile"
+    # qa_col1, qa_col2, qa_col3 = st.columns(3)
+    # with qa_col1:
+    #     if st.button("➕  Add Knowledge", use_container_width=True):
+    #         st.session_state["sidebar_selection"] = "Add Knowledge"
+    # with qa_col2:
+    #     if st.button("🔍  Search", use_container_width=True):
+    #         st.session_state["sidebar_selection"] = "Search"
+    # with qa_col3:
+    #     if st.button("👤  My Profile", use_container_width=True):
+    #         st.session_state["sidebar_selection"] = "Profile"
 
-    st.markdown("<br>", unsafe_allow_html=True)
+    # st.markdown("<br>", unsafe_allow_html=True)
 
     # Recent additions
     st.markdown("""
